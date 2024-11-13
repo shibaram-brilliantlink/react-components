@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import styled from "styled-components";
+import "./App.css";
+import Accordion from "./components/accordion/Accordion";
+import ImageSlider from "./components/image-slider/ImageSlider";
+import LoadMoreData from "./components/load-more-data/LoadMoreData";
+import StarRating from "./components/star-rating/StarRating";
+import QrGenerator from "./components/qr-generator/QrGenerator";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>List of react components</h1>
+      <Div componentName="01 Accordion">
+        <Accordion />
+      </Div>
+      <Div>
+        <ImageSlider />
+      </Div>
+      <Div>
+        <StarRating />
+      </Div>
+      <Div>
+        <LoadMoreData />
+      </Div>
+      <Div>
+        <QrGenerator />
+      </Div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+const Div = styled.div<{ componentName?: string }>`
+  border-bottom: 1px solid white;
+  text-align: left;
+  padding: 40px;
+  &::before {
+    content: "${(props) => props.componentName}";
+    color: white;
+    width: 400px;
+  }
+`;
